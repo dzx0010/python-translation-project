@@ -41,7 +41,15 @@ def translate_sequence(rna_sequence, genetic_code):
     pass
 
 def get_all_translations(rna_sequence, genetic_code):
-
+    rna_sequence = rna_sequence.upper()
+    amino_acid_list = []
+    for i in xrange(len(rna_sequence)-2)
+        codon = rna_sequence[i:i+3]
+        if condon == 'AUG':
+            amino_acid_all = translate_sequence(rna_sequence[i:],genetic_code)
+            amino_acid_list.append(amino_acid_all)
+    return amino_acid_list
+    start = rna_sequence.find('AUG')
     """Get a list of all amino acid sequences encoded by an RNA sequence.
 
     All three reading frames of `rna_sequence` are scanned from 'left' to
