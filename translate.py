@@ -38,7 +38,7 @@ def translate_sequence(rna_sequence, genetic_code):
     str
        A string of the translated amino acids.
     """
-    pass
+    
 
 def get_all_translations(rna_sequence, genetic_code):
     sequence = rna_sequence.upper()
@@ -87,7 +87,7 @@ def get_all_translations(rna_sequence, genetic_code):
         A list of strings; each string is an sequence of amino acids encoded by
         `rna_sequence`.
     """
-    pass
+    
 
 def get_reverse(sequence):
     sequence = sequence.upper()
@@ -108,7 +108,7 @@ def get_reverse(sequence):
     >>> get_reverse('ATGC')
     'CGTA'
     """
-    pass
+    
 
 def get_complement(sequence):
     sequence = sequence.upper()
@@ -131,7 +131,7 @@ def get_complement(sequence):
     >>> get_reverse('ATGC')
     'TACG'
     """
-    pass
+    
 
 def reverse_and_complement(sequence):
     sequence = sequence.upper()
@@ -154,7 +154,7 @@ def reverse_and_complement(sequence):
     >>> reverse_and_complement('ATGC')
     'GCAT'
     """
-    pass
+    
 
 def get_longest_peptide(rna_sequence, genetic_code):
     RNA = rna_sequence.upper()
@@ -206,7 +206,7 @@ def get_longest_peptide(rna_sequence, genetic_code):
         A string of the longest sequence of amino acids encoded by
         `rna_sequence`.
     """
-    pass
+    
 
 
 if __name__ == '__main__':
