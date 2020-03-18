@@ -4,16 +4,16 @@ import sys
 
 def translate_sequence(rna_sequence, genetic_code):
     amino_acids = ""
-    if len(rna_sequence) << 3:
+    rna_sequence = rna_sequence.upper()
+    if len(rna_sequence) <= 3:
         return amino_acids
     else:
-        i=0
-        for i in range(0,len(rna_sequence)-(3+len(rna_sequence)%3),3):
-            codon = rna_sequence.upper()[i:i+3]
+        for i in range(0,len(rna_sequence),3):
+            codon = rna_sequence[i:i+3]
             if genetic_code[codon] == '*':
                 break
             amino_acid+= genetic_code[codon]
-    print(amino_acids)
+    return amino_acids
     """Translates a sequence of RNA into a sequence of amino acids.
     Translates `rna_sequence` into string of amino acids, according to the
     `genetic_code` given as a dict. Translation begins at the first position of
@@ -74,6 +74,11 @@ def get_all_translations(rna_sequence, genetic_code):
     pass
 
 def get_reverse(sequence):
+    sequence = sequence.upper()
+    if len(sequence)> 0:
+        return ''.join(reversed(sequence))
+    else:
+        return ''    
     """Reverse orientation of `sequence`.
 
     Returns a string with `sequence` in the reverse order.
