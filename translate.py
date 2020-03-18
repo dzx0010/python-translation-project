@@ -78,7 +78,7 @@ def get_reverse(sequence):
     if len(sequence)> 0:
         return ''.join(reversed(sequence))
     else:
-        return ''    
+        return ''
     """Reverse orientation of `sequence`.
 
     Returns a string with `sequence` in the reverse order.
@@ -96,11 +96,12 @@ def get_reverse(sequence):
 
 def get_complement(sequence):
     sequence = sequence.upper()
-    complement = {'A':'U', 'C':'G', 'G':'C', 'U':'A'} 
-    if len(sequence) > 0:
-        return ''.join(complement[base] for base in sequence[::-1]
+    complement = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A'} 
+    if len(sequence)> 0:
+        return ''.join(complement[base] for base in sequence)
     else:
         return ''
+
     """Get the complement of a `sequence` of nucleotides.
 
     Returns a string with the complementary sequence of `sequence`.
