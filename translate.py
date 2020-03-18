@@ -163,19 +163,21 @@ def get_longest_peptide(rna_sequence, genetic_code):
         return ''
     else:
         c = 0
-        d = 0
         RNA_amino = ''
-        while  c < 3:
-            f = RNA[c:].find('AUG')
-            if len(RNA_amino) < len(translate_sequence(RNA[f:], genetic_code)):
-                RNA_amino = translate_sequence(RNA[f:], genetic_code)
-                break
+        while  c < 4:
+            for f in range(len(RNA)-2):
+                RNA_start = RNA[f:f+3]
+                if RNA_start == 'AUG':
+                    RNA_new = RNA[f:]
+                    if len(RNA_amino) < len(translate_sequence(RNA_new, genetic_code)):
+                        RNA_amino = translate_sequence(RNA_new, genetic_code)
+            for e in range(len(reverse_se)-2):
+                reverse_start = reverse_se[e:e+3]
+                if reverse_start == 'AUG':
+                    reverse_new = reverse_se[e:]
+                    if len(RNA_amino) < len(translate_sequence(reverse_new, genetic_code)):
+                        RNA_amino = translate_sequence(reverse_new, genetic_code)
             c=c+1
-        while d < 3:
-            e = reverse_se[d:].find('AUG')
-            if len(RNA_amino) < len(translate_sequence(reverse_se[e:], genetic_code)):
-                RNA_amino = translate_sequence(reverse_se[e:], genetic_code)
-            d=d+1
             return RNA_amino 
 
     """Get the longest peptide encoded by an RNA sequence.
