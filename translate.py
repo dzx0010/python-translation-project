@@ -158,25 +158,25 @@ def reverse_and_complement(sequence):
 
 def get_longest_peptide(rna_sequence, genetic_code):
     RNA = rna_sequence.upper()
-    reverse_se = get_reverse(RNA)
-    complement_se = get_complement(RNA)
-    c = 0
-    d = 0
-    e = 0
-    RNA_amino = ''
-    while  c < 3:
-        if len(RNA_amino) < len(translate_sequence(RNA[c:], genetic_code)):
-            RNA_amino = translate_sequence(RNA[c:], genetic_code)
-        c=c+1
-    while d < 3:
-        if len(RNA_amino) < len(translate_sequence(reverse_se[d:], genetic_code)):
-            RNA_amino = translate_sequence(reverse_se[d:], genetic_code)
-        d=d+1
-    while e < 3:
-        if len(RNA_amino) < len(translate_sequence(complement_se[d:], genetic_code)):
-            RNA_amino = translate_sequence(complement_se[d:], genetic_code)
-        e=e+1
-    return RNA_amino 
+    reverse_se = reverse_and_complement(RNA)
+    if len(translate_sequence(reverse_se, genetic_code)) == 0 or len(translate_sequence(RNA, genetic_code)) == 0:
+        return ''
+    else:
+        c = 0
+        d = 0
+        RNA_amino = ''
+        while  c < 3:
+            f = RNA[c:].find('AUG')
+            if len(RNA_amino) < len(translate_sequence(RNA[f:], genetic_code)):
+                RNA_amino = translate_sequence(RNA[f:], genetic_code)
+                break
+            c=c+1
+        while d < 3:
+            e = reverse_se[d:].find('AUG')
+            if len(RNA_amino) < len(translate_sequence(reverse_se[e:], genetic_code)):
+                RNA_amino = translate_sequence(reverse_se[e:], genetic_code)
+            d=d+1
+            return RNA_amino 
 
     """Get the longest peptide encoded by an RNA sequence.
 
