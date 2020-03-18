@@ -118,6 +118,12 @@ def get_complement(sequence):
     pass
 
 def reverse_and_complement(sequence):
+    sequence = sequence.upper()
+    complement = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A'}
+    if len(sequence)> 0:
+        return ''.join(complement[base] for base in sequence[::-1])
+    else:
+        return ''
     """Get the reversed and complemented form of a `sequence` of nucleotides.
 
     Returns a string that is the reversed and complemented sequence
