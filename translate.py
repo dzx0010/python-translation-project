@@ -157,6 +157,27 @@ def reverse_and_complement(sequence):
     pass
 
 def get_longest_peptide(rna_sequence, genetic_code):
+    RNA = rna_sequence.upper()
+    reverse_se = get_reverse(RNA)
+    complement_se = get_complement(RNA)
+    c = 0
+    d = 0
+    e = 0
+    RNA_amino = ''
+    while  c < 3:
+        if len(RNA_amino) < len(translate_sequence(RNA[c:], genetic_code)):
+            RNA_amino = translate_sequence(RNA[c:], genetic_code)
+        c=c+1
+    while d < 3:
+        if len(RNA_amino) < len(translate_sequence(reverse_se[d:], genetic_code)):
+            RNA_amino = translate_sequence(reverse_se[d:], genetic_code)
+        d=d+1
+    while e < 3:
+        if len(RNA_amino) < len(translate_sequence(complement_se[d:], genetic_code)):
+            RNA_amino = translate_sequence(complement_se[d:], genetic_code)
+        e=e+1
+    return RNA_amino 
+
     """Get the longest peptide encoded by an RNA sequence.
 
     Explore six reading frames of `rna_sequence` (the three reading frames of
