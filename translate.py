@@ -95,6 +95,12 @@ def get_reverse(sequence):
     pass
 
 def get_complement(sequence):
+    sequence = sequence.upper()
+    complement = {'A':'U', 'C':'G', 'G':'C', 'U':'A'} 
+    if len(sequence) > 0:
+        return ''.join(complement[base] for base in sequence[::-1]
+    else:
+        return ''
     """Get the complement of a `sequence` of nucleotides.
 
     Returns a string with the complementary sequence of `sequence`.
